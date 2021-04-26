@@ -12,65 +12,7 @@
             accordion :open-names="openMenus" :active-name="currentPage" @on-open-change="menuChange">
                 <!-- 动态菜单 -->
                 <div v-for="(item, index) in menuItems" :key="index">
-                    <Submenu :class="isShowAsideTitle? '' : 'shrink'" v-if="item.children" :name="index">
-                        <template slot="title">
-                            <Icon :size="item.size" :type="item.type"/>
-                            <span v-show="isShowAsideTitle">{{item.text}}</span>
-                        </template>
-                        <div v-for="(subItem, i) in item.children" :key="index + i">
-                            <Submenu :class="isShowAsideTitle? '' : 'shrink'" v-if="subItem.children" :name="index + '-' + i">
-                                <template slot="title">
-                                    <Icon :size="subItem.size" :type="subItem.type"/>
-                                    <span v-show="isShowAsideTitle">{{subItem.text}}</span>
-                                </template>
-                                <template v-for="(threeItem, k) in subItem.children">
-                                    <a href="https://www.baidu.com" target="_blank" :key="index + i + k" v-if="threeItem.isExternal">
-                                        <MenuItem :class="isShowAsideTitle? '' : 'shrink'" class="menu-level-3"
-                                        :name="'external-link-' + index + i + k">
-                                            <template v-if="!threeItem.hidden">
-                                                <a :href="threeItem.url" target="_blank" class="external">
-                                                    <Icon :size="threeItem.size" :type="threeItem.type"/>
-                                                    <span v-show="isShowAsideTitle">{{threeItem.text}}</span>
-                                                </a>
-                                            </template>
-                                        </MenuItem>
-                                    </a>
-                                    <MenuItem v-else :class="isShowAsideTitle? '' : 'shrink'" class="menu-level-3"
-                                    :name="threeItem.name" :key="index + i + k">
-                                        <template v-if="!threeItem.hidden">
-                                            <Icon :size="threeItem.size" :type="threeItem.type"/>
-                                            <span v-show="isShowAsideTitle">{{threeItem.text}}</span>
-                                        </template>
-                                    </MenuItem>
-                                </template>
-                            </Submenu>
-                            <template v-else-if="!subItem.hidden">
-                                <a :href="subItem.url" v-if="subItem.isExternal" target="_blank" class="external">
-                                    <MenuItem :class="isShowAsideTitle? '' : 'shrink'"
-                                    :name="'external-link-' + index + '-' + i">
-                                        <Icon :size="subItem.size" :type="subItem.type"/>
-                                        <span v-show="isShowAsideTitle">{{subItem.text}}</span>
-                                    </MenuItem>
-                                </a>
-                                <MenuItem v-else :class="isShowAsideTitle? '' : 'shrink'" :name="subItem.name">
-                                    <Icon :size="subItem.size" :type="subItem.type"/>
-                                    <span v-show="isShowAsideTitle">{{subItem.text}}</span>
-                                </MenuItem>
-                            </template>
-                        </div>
-                    </Submenu>
-                    <template v-else-if="!item.hidden">
-                        <a :href="item.url" v-if="item.isExternal" target="_blank" class="external">
-                            <MenuItem :class="isShowAsideTitle? '' : 'shrink'" :name="'external-link-' + index">
-                                    <Icon :size="item.size" :type="item.type"/>
-                                    <span v-show="isShowAsideTitle">{{item.text}}</span>
-                            </MenuItem>
-                        </a>
-                        <MenuItem v-else :class="isShowAsideTitle? '' : 'shrink'" :name="item.name">
-                            <Icon :size="item.size" :type="item.type" />
-                            <span v-show="isShowAsideTitle">{{item.text}}</span>
-                        </MenuItem>
-                    </template>
+                    <MenuItem :to="`/${item.name}`" name="item.name">{{item.text}}</MenuItem>
                 </div>
             </Menu>
         </aside>
