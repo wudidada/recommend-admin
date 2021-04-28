@@ -5,7 +5,7 @@ import { showLoading, closeLoading } from "@/utils/loading";
 import { resetTokenAndClearUser } from "@/utils";
 
 const service = axios.create({
-  baseURL: "http://82.157.174.30/:3000",
+  baseURL: "http://82.157.174.30:3000",
   timeout: 60000
 });
 
