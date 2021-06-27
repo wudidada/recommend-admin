@@ -1,20 +1,20 @@
 <template>
   <div style="padding: 10px">
     <div style="background: #fff; border-radius: 8px; padding: 20px">
-      <Button type="primary" @click="addQuestionType">添加问题类型</Button>
+      <Button type="primary" @click="addQuestionType">add question type</Button>
       <Modal
         v-model="isShowDialog"
-        :title="isAddQuestionType ? '添加问题类型' : '编辑问题类型'"
+        :title="isAddQuestionType ? 'add question type' : 'edit question type'"
         @on-ok="ok"
         @on-cancel="cancel"
       >
         <Form>
-          <FormItem label="问题类型">
-            <Input v-model="questionType" placeholder="问题类型" />
+          <FormItem label="question type">
+            <Input v-model="questionType" placeholder="question type" />
           </FormItem>
 
-          <FormItem label="具体问题">
-            <Input v-model="desc" placeholder="具体问题" />
+          <FormItem label="question desc">
+            <Input v-model="desc" placeholder="question desc" />
           </FormItem>
         </Form>
       </Modal>
@@ -25,9 +25,9 @@
               type="primary"
               style="margin-right: 12px"
               @click="updateQuestionType(row, index)"
-              >编辑</Button
+              >edit</Button
             >
-            <Button type="error" @click="remove(row, index)">删除</Button>
+            <Button type="error" @click="remove(row, index)">delete</Button>
           </div>
         </template>
       </Table>
@@ -46,15 +46,15 @@ export default {
       isAddQuestionType: false,
       columns: [
         {
-          title: "问题类型",
+          title: "question type",
           key: "question_type"
         },
         {
-          title: "具体问题",
+          title: "question desc",
           key: "desc"
         },
         {
-          title: "动作",
+          title: "action",
           slot: "action"
         }
       ],
@@ -79,11 +79,11 @@ export default {
               desc: this.desc,
               _id: this._id
             });
-            this.$Message.success("添加成功");
+            this.$Message.success("add success");
           })
           .catch(err => {
             console.log(err);
-            this.$Message.error("添加失败");
+            this.$Message.error("add failed");
           })
           .finally(() => this.cancel());
       } else {
@@ -99,12 +99,12 @@ export default {
               desc: this.desc,
               _id: this._id
             });
-            this.$Message.success("更新成功");
+            this.$Message.success("update success");
           })
           .catch(err => {
             console.log("failed");
             console.log(err);
-            this.$Message.error("更新失败");
+            this.$Message.error("update failed");
           })
           .finally(() => this.cancel());
       }
@@ -141,9 +141,9 @@ export default {
         .delQuestionType(row._id)
         .then(() => {
           this.data.splice(index, 1);
-          this.$Message.success("删除成功");
+          this.$Message.success("delete success");
         })
-        .catch(() => this.$Message.error("删除失败"));
+        .catch(() => this.$Message.error("delete failed"));
     }
   },
   created() {

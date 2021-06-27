@@ -11,8 +11,7 @@
                 @keyup.enter.native="submit" />
                 <p class="error">{{pwdError}}</p>
             </div>
-            <Button :loading="isShowLoading" class="submit" type="primary" @click="submit">登陆</Button>
-            <p class="account"><span @click="register">注册账号</span> | <span @click="forgetPwd">忘记密码</span></p>
+            <Button :loading="isShowLoading" class="submit" type="primary" @click="submit">Login</Button>
         </div>
     </div>
 </template>
@@ -44,14 +43,14 @@ export default {
     methods: {
         verifyAccount() {
             if (this.account !== 'admin') {
-                this.accountError = '账号为admin'
+                this.accountError = 'account not correct'
             } else {
                 this.accountError = ''
             }
         },
         verifyPwd() {
             if (this.pwd !== 'admin') {
-                this.pwdError = '密码为admin'
+                this.pwdError = 'password not correct'
             } else {
                 this.pwdError = ''
             }
@@ -67,17 +66,17 @@ export default {
                 this.isShowLoading = true
                 // 登陆成功 设置用户信息
                 localStorage.setItem('userImg', 'https://avatars3.githubusercontent.com/u/22117876?s=460&v=4')
-                localStorage.setItem('userName', '小明')
+                localStorage.setItem('userName', 'admin')
                 // 登陆成功 假设这里是后台返回的 token
                 localStorage.setItem('token', 'i_am_token')
                 this.$router.push({ path: this.redirect || '/' })
             } else {
                 if (this.account !== 'admin') {
-                    this.accountError = '账号为admin'
+                    this.accountError = 'username not correct'
                 }
 
                 if (this.pwd !== 'admin') {
-                    this.pwdError = '密码为admin'
+                    this.pwdError = 'password not correct'
                 }
             }
         },

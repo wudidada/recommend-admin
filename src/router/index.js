@@ -7,13 +7,13 @@ const commonRoutes = [
   {
     path: "/login",
     name: "login",
-    meta: { title: "登录" },
+    meta: { title: "login" },
     component: () => import("../components/Login.vue")
   },
   {
     path: "/other", // 点击侧边栏跳到一个单独的路由页面，需要定义，层级和其他顶级路由一样
     name: "other",
-    meta: { title: "单独的路由" },
+    meta: { title: "other" },
     component: () => import("../views/Other.vue")
   },
   {
@@ -30,43 +30,43 @@ export const asyncRoutes = {
   home: {
     path: "home",
     name: "home",
-    meta: { title: "主页" },
+    meta: { title: "homepage" },
     component: () => import("../views/Home.vue")
   },
   t1: {
     path: "t1",
     name: "t1",
-    meta: { title: "表格" },
+    meta: { title: "table" },
     component: () => import("../views/T1.vue")
   },
   password: {
     path: "password",
     name: "password",
-    meta: { title: "修改密码" },
+    meta: { title: "change password" },
     component: () => import("../views/Password.vue")
   },
   msg: {
     path: "msg",
     name: "msg",
-    meta: { title: "通知消息" },
+    meta: { title: "messages" },
     component: () => import("../views/Msg.vue")
   },
   userinfo: {
     path: "userinfo",
     name: "userinfo",
-    meta: { title: "用户信息" },
+    meta: { title: "user info" },
     component: () => import("../views/UserInfo.vue")
   },
   question: {
     path: "question",
     name: "question",
-    meta: { title: "编辑问题" },
+    meta: { title: "Edit Qestion" },
     component: () => import("../views/Question.vue")
   },
   questiontype: {
     path: "questiontype",
     name: "questiontype",
-    meta: { title: "编辑问题类型" },
+    meta: { title: "Edit QestionType" },
     component: () => import("../views/QuestionType.vue")
   }
 };

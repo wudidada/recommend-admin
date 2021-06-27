@@ -1,15 +1,15 @@
 <template>
   <div style="padding: 10px">
     <div style="background: #fff; border-radius: 8px; padding: 20px">
-      <Button type="primary" @click="addQuestion">添加问题</Button>
+      <Button type="primary" @click="addQuestion">add question</Button>
       <Modal
         v-model="isShowDialog"
-        :title="isAddQuestion ? '添加问题' : '编辑问题'"
+        :title="isAddQuestion ? 'add question' : 'edit question'"
         @on-ok="ok"
         @on-cancel="cancel"
       >
         <Form :model="question">
-          <FormItem label="问题">
+          <FormItem label="question">
             <Select
               v-model="question.type"
               :default-label="getQestionDesc"
@@ -25,7 +25,7 @@
             </Select>
           </FormItem>
 
-          <FormItem label="选项">
+          <FormItem label="options">
             <Select
               multiple
               @on-select="selectOption"
@@ -56,9 +56,9 @@
               type="primary"
               style="margin-right: 12px"
               @click="updateQuestion(row, index)"
-              >编辑</Button
+              >edit</Button
             >
-            <Button type="error" @click="remove(row, index)">删除</Button>
+            <Button type="error" @click="remove(row, index)">delete</Button>
           </div>
         </template>
       </Table>
@@ -78,15 +78,15 @@ export default {
       isLoading: false,
       columns: [
         {
-          title: "问题",
+          title: "question",
           slot: "question"
         },
         {
-          title: "选项",
+          title: "options",
           slot: "options"
         },
         {
-          title: "动作",
+          title: "action",
           slot: "action"
         }
       ],
@@ -151,11 +151,11 @@ export default {
               ...this.question,
               _id: response._id
             });
-            this.$Message.success("添加成功");
+            this.$Message.success("add success");
           })
           .catch(err => {
             console.log(err);
-            this.$Message.error("添加失败");
+            this.$Message.error("add failed");
           })
           .finally(() => this.cancel());
       } else {
@@ -167,12 +167,12 @@ export default {
             this.data.splice(this.row, 1, {
               ...this.question
             });
-            this.$Message.success("更新成功");
+            this.$Message.success("update success");
           })
           .catch(err => {
             console.log("failed");
             console.log(err);
-            this.$Message.error("更新失败");
+            this.$Message.error("update failed");
           })
           .finally(() => this.cancel());
       }
@@ -214,9 +214,9 @@ export default {
         .delQuestion(row._id)
         .then(() => {
           this.data.splice(index, 1);
-          this.$Message.success("删除成功");
+          this.$Message.success("delete success");
         })
-        .catch(() => this.$Message.error("删除失败"));
+        .catch(() => this.$Message.error("delete failed"));
     }
   },
   created() {

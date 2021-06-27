@@ -9,7 +9,7 @@ export function resetTokenAndClearUser() {
   resetRouter();
 }
 
-export const defaultDocumentTitle = "电影推荐后台";
+export const defaultDocumentTitle = "Movie Recommend Admin";
 export function getDocumentTitle(pageTitle) {
   if (pageTitle) return `${defaultDocumentTitle} - ${pageTitle}`;
   return `${defaultDocumentTitle}`;

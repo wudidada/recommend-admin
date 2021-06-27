@@ -5,7 +5,7 @@
       <!-- logo -->
       <div class="logo-c">
         <img src="../assets/imgs/logo.png" alt="logo" class="logo" />
-        <span v-show="isShowAsideTitle">后台管理</span>
+        <span v-show="isShowAsideTitle">Admin System</span>
       </div>
       <!-- 菜单栏 -->
       <Menu
@@ -171,9 +171,9 @@
               </div>
               <DropdownMenu slot="list">
                 <!-- name标识符 -->
-                <DropdownItem name="1">修改密码</DropdownItem>
-                <DropdownItem name="2">基本资料</DropdownItem>
-                <DropdownItem divided name="3">退出登陆</DropdownItem>
+                <DropdownItem name="1">change password</DropdownItem>
+                <DropdownItem name="2">change info</DropdownItem>
+                <DropdownItem divided name="3">exit</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
@@ -203,8 +203,8 @@
               <Dropdown trigger="click" @on-click="closeTags">
                 <Icon type="ios-options" />
                 <DropdownMenu slot="list">
-                  <DropdownItem name="1">关闭其他标签</DropdownItem>
-                  <DropdownItem name="2">关闭所有标签</DropdownItem>
+                  <DropdownItem name="1">close current tab</DropdownItem>
+                  <DropdownItem name="2">close all tab</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </div>
@@ -250,7 +250,7 @@ export default {
       asideClassName: "aside-big", // 控制侧边栏宽度变化
       asideArrowIcons: [], // 缓存侧边栏箭头图标 收缩时用
       // 面包屑
-      crumbs: "主页",
+      crumbs: "homepage",
       userName: "",
       userImg: "",
       // 主页路由名称
@@ -535,7 +535,7 @@ export default {
     info() {
       const self = this;
       this.$Notice.info({
-        title: `您有${this.msgNum}条消息`,
+        title: `you have ${this.msgNum} messages`,
         render(h) {
           return h(
             "Button",
